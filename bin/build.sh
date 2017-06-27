@@ -9,5 +9,5 @@ else
 fi
 source ${DIR}/.config/${CONFIG_FILE}
 
-docker-compose -p ${COMPOSE_STACK_NAME} -f ${DIR}/../docker-compose.yml -f ${DIR}/../docker-compose.override.yml down
+docker build -t ${IMAGE_NAME}:${IMAGE_TAG} ${DIR}/..
 

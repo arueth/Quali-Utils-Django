@@ -2,4 +2,12 @@
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-docker container stop quali_utils_django
+if [ -z "$1" ]; then
+  CONFIG_FILE=dev.conf
+else
+  CONFIG_FILE=${1}.conf
+fi
+source ${DIR}/.config/${CONFIG_FILE}
+
+docker container stop ${CONTAINER_NAME}
+

@@ -3,7 +3,9 @@ import os
 import sys
 
 if __name__ == "__main__":
-    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "quali_utils.settings")
+    os.environ.setdefault("DJANGO_ENVIRONMENT", "production")
+    print("Django environment = %s" % os.environ.get('DJANGO_ENVIRONMENT'))
+    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "quali_utils.settings.%s" % os.environ.get('DJANGO_ENVIRONMENT'))
     try:
         from django.core.management import execute_from_command_line
     except ImportError:
